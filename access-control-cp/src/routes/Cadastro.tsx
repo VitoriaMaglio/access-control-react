@@ -28,10 +28,20 @@ const Cadastro: React.FC = () => {
         hasError = true;
       }
       if (hasError) return; 
+      const nextId = usuarios.length
+        ? Math.max(
+            ...usuarios.map((u: { id?: number | string }) => {
+              // Converte ids string (ex.: "00b7") para 0 para ignorar aleatórios
+              const parsed = typeof u.id === "string" ? Number(u.id) : u.id;
+              return Number.isFinite(parsed) ? (parsed as number) : 0;
+            })
+          ) + 1
+        : 1;
+
       await fetch("http://localhost:3001/usuarios", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
+        body: JSON.stringify({ id: nextId, ...data })
       });
       alert("Cadastro realizado com sucesso!");
     } catch (error) {
