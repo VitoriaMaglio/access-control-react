@@ -6,7 +6,6 @@ interface LoginFormData {
   nomeUsuario: string;
   email: string;
 }
-
 const Login: React.FC = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormData>();
   const navigate = useNavigate(); 
@@ -15,7 +14,6 @@ const Login: React.FC = () => {
     console.log("Dados do login:", data);
     alert(`Bem-vindo, ${data.nomeUsuario}!`);
   };
-
   const irParaCadastro = () => {
     navigate("/cadastro"); 
   };
@@ -39,7 +37,6 @@ const Login: React.FC = () => {
           />
           {errors.nomeUsuario && <p style={{ color: "red" }}>{errors.nomeUsuario.message}</p>}
         </div>
-
         <div style={{ marginBottom: "1rem" }}>
           <label htmlFor="email">Email:</label>
           <br />
@@ -59,8 +56,6 @@ const Login: React.FC = () => {
       </form>
 
     <button type="button" onClick={irParaCadastro}>Ir para Cadastro</button>
-
-
     </div>
   );
 };
