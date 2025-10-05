@@ -31,7 +31,11 @@ const Login: React.FC = () => {
           <input
             id="nomeUsuario"
             type="text"
-            {...register("nomeUsuario", { required: "Nome obrigatório", minLength: { value: 3, message: "Mínimo 3 caracteres" } })}
+           {...register("nomeUsuario", { 
+              required: "Por favor, insira seu nome de usuário", 
+              minLength: { value: 3, message: "Nome de usuário deve ter pelo menos 3 caracteres" },
+              maxLength: { value: 20, message: "Nome de usuário deve ter no máximo 20 caracteres" }
+            })}
           />
           {errors.nomeUsuario && <p style={{ color: "red" }}>{errors.nomeUsuario.message}</p>}
         </div>
@@ -42,10 +46,11 @@ const Login: React.FC = () => {
           <input
             id="email"
             type="email"
-            {...register("email", { 
-              required: "Email obrigatório",
-              pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Email inválido" } 
-            })}
+           {...register("email", { 
+            required: "Por favor, insira seu email",
+            pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Formato de email inválido" },
+            maxLength: { value: 50, message: "Email muito longo" }
+          })}
           />
           {errors.email && <p style={{ color: "red" }}>{errors.email.message}</p>}
         </div>

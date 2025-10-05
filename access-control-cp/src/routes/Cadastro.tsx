@@ -26,7 +26,11 @@ const Cadastro: React.FC = () => {
           <label>Nome:</label>
           <input
             type="text"
-            {...register('nome', { required: 'Nome é obrigatório' })}
+            {...register('nome', {
+                required: 'Por favor, insira seu nome completo',
+                minLength: { value: 3, message: 'Nome deve ter pelo menos 3 caracteres' },
+                maxLength: { value: 50, message: 'Nome muito longo' }
+            })}
           />
           {errors.nome && <p style={{ color: 'red' }}>{errors.nome.message}</p>}
         </div>
@@ -36,7 +40,12 @@ const Cadastro: React.FC = () => {
           <label>Nome de Usuário:</label>
           <input
             type="text"
-            {...register('nomeUsuario', { required: 'Nome de usuário é obrigatório' })}
+            {...register('nomeUsuario', {
+                required: 'Insira um nome de usuário',
+                minLength: { value: 3, message: 'Nome de usuário deve ter ao menos 3 caracteres' },
+                maxLength: { value: 20, message: 'Nome de usuário muito longo' }
+            })}
+
           />
           {errors.nomeUsuario && <p style={{ color: 'red' }}>{errors.nomeUsuario.message}</p>}
         </div>
@@ -47,12 +56,11 @@ const Cadastro: React.FC = () => {
           <input
             type="email"
             {...register('email', { 
-              required: 'Email é obrigatório',
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: 'Formato de email inválido'
-              }
+                required: 'Insira um email válido',
+                pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Formato de email inválido' },
+                maxLength: { value: 50, message: 'Email muito longo' }
             })}
+
           />
           {errors.email && <p style={{ color: 'red' }}>{errors.email.message}</p>}
         </div>
