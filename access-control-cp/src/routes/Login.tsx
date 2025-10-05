@@ -9,7 +9,7 @@ interface LoginFormData {
 
 const Login: React.FC = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormData>();
-  const navigate = useNavigate(); // <-- necessário para navegar
+  const navigate = useNavigate(); 
 
   const onSubmit = (data: LoginFormData) => {
     console.log("Dados do login:", data);
@@ -17,7 +17,7 @@ const Login: React.FC = () => {
   };
 
   const irParaCadastro = () => {
-    navigate("/cadastro"); // navegação correta
+    navigate("/cadastro"); 
   };
 
   return (
