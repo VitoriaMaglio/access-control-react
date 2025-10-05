@@ -27,7 +27,6 @@ const Login: React.FC = () => {
 
   return (
     <div style={{ padding: "2rem", maxWidth: "400px", margin: "0 auto" }}>
-
       <h1 className="text-3xl font-bold text-gray-800 text-center mb-6">
         Página de Login
       </h1>
@@ -76,36 +75,51 @@ const Login: React.FC = () => {
           )}
         </div>
 
-        <div style={{ marginBottom: "1rem" }}>
-          <label>Persistência:</label>
-          <div style={{ display: "flex", gap: 12 }}>
-            <label>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Persistência:
+          </label>
+          <div className="flex gap-4">
+            <label className="flex items-center gap-2 text-sm text-gray-600">
               <input
                 type="radio"
                 name="persistencia"
                 value="session"
                 checked={persistencia === "session"}
                 onChange={() => setPersistencia("session")}
+                className="text-indigo-500 focus:ring-indigo-500"
               />
-              Somente esta sessão
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="persistencia"
-                value="local"
-                checked={persistencia === "local"}
-                onChange={() => setPersistencia("local")}
-              />
+                Somente esta sessão
+              </label>
+              <label className="flex items-center gap-2 text-sm text-gray-600">
+                <input
+                  type="radio"
+                  name="persistencia"
+                  value="local"
+                  checked={persistencia === "local"}
+                  onChange={() => setPersistencia("local")}
+                  className="text-indigo-500 focus:ring-indigo-500"
+                />
               Lembrar-me neste dispositivo
             </label>
           </div>
         </div>
 
-        <button type="submit">Entrar</button>
+        <button
+          type="submit"
+          className="w-full bg-indigo-600 text-white py-2.5 rounded-lg font-semibold
+                     hover:bg-indigo-700 transition duration-200 shadow-md">
+          Entrar
+        </button>
       </form>
 
-    <button type="button" onClick={irParaCadastro}>Ir para Cadastro</button>
+      <button
+        type="button"
+        onClick={irParaCadastro}
+        className="w-full mt-4 bg-gray-100 text-gray-800 py-2 rounded-lg font-medium
+                   hover:bg-gray-200 transition duration-200 shadow-sm">
+        Ir para Cadastro
+      </button>
     </div>
   );
 };
