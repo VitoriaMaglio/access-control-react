@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./routes/Login";
 import Cadastro from "./routes/Cadastro";
-import './App.css'
+
 
 function App() {
   return (
