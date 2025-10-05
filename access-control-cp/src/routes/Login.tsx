@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context";
 
 interface LoginFormData {
   nomeUsuario: string;
@@ -9,10 +10,16 @@ interface LoginFormData {
 const Login: React.FC = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormData>();
   const navigate = useNavigate(); 
+  const { login } = useAuth();
+  const [persistencia, setPersistencia] = useState<"local" | "session">("session");
 
-  const onSubmit = (data: LoginFormData) => {
-    console.log("Dados do login:", data);
-    alert(`Bem-vindo, ${data.nomeUsuario}!`);
+  const onSubmit = async (data: LoginFormData) => {
+    const ok = await login({ nomeUsuario: data.nomeUsuario, email: data.email }, persistencia);
+    if (!ok) {
+      alert("Usuário não encontrado ou credenciais inválidas.");
+      return;
+    }
+    navigate("/cadastro");
   };
   const irParaCadastro = () => {
     navigate("/cadastro"); 
@@ -50,6 +57,31 @@ const Login: React.FC = () => {
           })}
           />
           {errors.email && <p style={{ color: "red" }}>{errors.email.message}</p>}
+        </div>
+        <div style={{ marginBottom: "1rem" }}>
+          <label>Persistência:</label>
+          <div style={{ display: "flex", gap: 12 }}>
+            <label>
+              <input
+                type="radio"
+                name="persistencia"
+                value="session"
+                checked={persistencia === "session"}
+                onChange={() => setPersistencia("session")}
+              />
+              Somente esta sessão
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="persistencia"
+                value="local"
+                checked={persistencia === "local"}
+                onChange={() => setPersistencia("local")}
+              />
+              Lembrar-me neste dispositivo
+            </label>
+          </div>
         </div>
 
         <button type="submit">Entrar</button>
