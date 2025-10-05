@@ -9,34 +9,36 @@ Mateus Granja dos Santos - RM564930 | Felipe Maglio Filho - RM563512 | Vitoria V
 
 ---
 
-⚙️ Funcionalidades Principais
+Funcionalidades Principais
 
-Página de Login (/login)
+1. Página de Login (/login)
 
-É a página inicial da aplicação.
+- É a página inicial da aplicação.
 
-Contém um formulário com os campos nomeUsuario e email.
+- Contém um formulário com os campos nomeUsuario e email.
 
-Os campos são validados com React Hook Form, exibindo mensagens de erro personalizadas.
+- Os campos são validados com React Hook Form, exibindo mensagens de erro personalizadas.
 
-Ao enviar o formulário, o sistema consulta o endpoint /usuarios no json-server para validar as credenciais.
+- Ao enviar o formulário, o sistema consulta o endpoint /usuarios no json-server para validar as credenciais.
 
-Se o login for bem-sucedido, o usuário é autenticado e seus dados (nome e email) são armazenados no localStorage/sessionStorage.
+- Se o login for bem-sucedido, o usuário é autenticado e seus dados (nome e email) são armazenados no localStorage/sessionStorage.
 
-Página de Cadastro (/cadastro)
+2. Página de Cadastro (/cadastro)
 
-Acessível a partir de um botão ou link presente na tela de login.
+- Acessível a partir de um botão ou link presente na tela de login.
 
-Contém um formulário com os campos nome, nomeUsuario e email, todos validados com React Hook Form.
+- Contém um formulário com os campos nome, nomeUsuario e email, todos validados com React Hook Form.
 
-Antes de cadastrar, o sistema verifica se o nomeUsuario ou email já existem no banco de dados.
+- Antes de cadastrar, o sistema verifica se o nomeUsuario ou email já existem no banco de dados.
 
-Em caso de duplicidade, uma mensagem de erro personalizada é exibida.
+- Em caso de duplicidade, uma mensagem de erro personalizada é exibida.
 
-Se os dados forem válidos, o novo usuário é registrado no endpoint /usuarios do json-server.
+- Se os dados forem válidos, o novo usuário é registrado no endpoint /usuarios do json-server.
 
-Exibição de Dados do Usuário Autenticado
+3. Exibição de Dados do Usuário Autenticado
 
-Após o login, o nome e o email do usuário são exibidos em todas as páginas da aplicação.
+- Após o login, o nome e o email do usuário são exibidos em todas as páginas da aplicação.
 
-O sistema utiliza Context API ou estado global (como Zustand ou Redux, dependendo da implementação) para gerenciar as informações do usuário autenticado.
+- O sistema utiliza Context API ou estado global (como Zustand ou Redux, dependendo da implementação) para gerenciar as informações do usuário autenticado.
+
+
