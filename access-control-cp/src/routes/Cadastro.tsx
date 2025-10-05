@@ -10,13 +10,43 @@ type FormValues = {
 };
 
 const Cadastro: React.FC = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
+  const { register, handleSubmit, formState: { errors }, setError } = useForm<FormValues>();
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log("Dados do formulário:", data);
-    alert("Cadastro realizado com sucesso!");
+  const onSubmit: SubmitHandler<FormValues> =  async (data) => {
+     try {
+        const res = await fetch("http://localhost:3001/usuarios");
+        const usuarios = await res.json();
+        const usuarioExistente = usuarios.find(
+        (u: FormValues) => u.nomeUsuario === data.nomeUsuario
+      );
+      const emailExistente = usuarios.find(
+        (u: FormValues) => u.email === data.email
+      );
+
+      let hasError = false;
+
+      if (usuarioExistente) {
+        setError("nomeUsuario", { type: "manual", message: "Nome de usuário já existe" });
+        hasError = true;
+      }
+      if (emailExistente) {
+        setError("email", { type: "manual", message: "Email já cadastrado" });
+        hasError = true;
+      }
+
+      if (hasError) return; 
+      await fetch("http://localhost:3001/usuarios", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      alert("Cadastro realizado com sucesso!");
+    } catch (error) {
+      console.error("Erro ao cadastrar:", error);
+      alert("Ocorreu um erro. Tente novamente.");
+    }
   };
-
   return (
     <div style={{ maxWidth: '400px', margin: '50px auto' }}>
       <h2>Cadastro</h2>

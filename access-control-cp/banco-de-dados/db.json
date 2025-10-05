@@ -4,19 +4,19 @@
       "id": 1,
       "nome": "Vitória Maglio",
       "nomeUsuario": "vitoria.m",
-      "email": "vitoria@example.com"
+      "email": "vitoria@gmail.com"
     },
     {
       "id": 2,
-      "nome": "Carlos Pereira",
-      "nomeUsuario": "carlos.p",
-      "email": "carlos@example.com"
+      "nome": "Mateus",
+      "nomeUsuario": "mateus.g",
+      "email": "mateus@gmail.com"
     },
     {
       "id": 3,
-      "nome": "Ana Souza",
-      "nomeUsuario": "ana.souza",
-      "email": "ana@example.com"
+      "nome": "Felipe",
+      "nomeUsuario": "felipe.m",
+      "email": "felipe@gmail.com"
     }
   ]
 }
