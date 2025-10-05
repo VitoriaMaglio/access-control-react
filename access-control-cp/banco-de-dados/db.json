@@ -1,19 +1,19 @@
 {
   "usuarios": [
     {
-      "id": 1,
+      "id": "1",
       "nome": "Vitória Maglio",
       "nomeUsuario": "vitoria.m",
       "email": "vitoria@gmail.com"
     },
     {
-      "id": 2,
+      "id": "2",
       "nome": "Mateus",
       "nomeUsuario": "mateus.g",
       "email": "mateus@gmail.com"
     },
     {
-      "id": 3,
+      "id": "3",
       "nome": "Felipe",
       "nomeUsuario": "felipe.m",
       "email": "felipe@gmail.com"
