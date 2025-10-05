@@ -27,7 +27,9 @@ const Login: React.FC = () => {
 
   return (
     <div style={{ padding: "2rem", maxWidth: "400px", margin: "0 auto" }}>
-      <h1>Página de Login</h1>
+      <h1 className="text-3xl font-bold text-gray-800 text-center mb-6">
+        Página de Login
+      </h1>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div style={{ marginBottom: "1rem" }}>
