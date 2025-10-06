@@ -58,52 +58,65 @@ const Cadastro: React.FC = () => {
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 
-        <div>
-          <label htmlFor="nome" className="block text-sm font-medium text-gray-700">
-            Nome:
-          </label>
-          <input
-            id="nome"
-            type="text"
-            {...register("nome", {
-              required: "Por favor, insira seu nome completo",
-              minLength: { value: 3, message: "Nome deve ter pelo menos 3 caracteres" },
-              maxLength: { value: 50, message: "Nome muito longo" },
-            })}
-            className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm
-                       focus:ring-2 focus:ring-indigo-500 focus:outline-none transition duration-200"
-          />
-          {errors.nome && (
-            <p className="text-red-500 text-sm mt-1">{errors.nome.message}</p>
-          )}
-        </div>
+      <div>
+        <label htmlFor="nome" className="block text-sm font-medium text-gray-700">
+           Nome:
+        </label>
+        <input
+           id="nome"
+           type="text"
+          {...register("nome", {
+            required: "Por favor, insira seu nome completo",
+             minLength: { value: 3, message: "Nome deve ter pelo menos 3 caracteres" },
+            maxLength: { value: 50, message: "Nome muito longo" },
+           })}
+           className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm
+                     focus:ring-2 focus:ring-indigo-500 focus:outline-none transition duration-200"
+        />
+         {errors.nome && (
+           <p className="text-red-500 text-sm mt-1">{errors.nome.message}</p>
+         )}
+      </div>
+      <div>
+        <label htmlFor="nomeUsuario" className="block text-sm font-medium text-gray-700">
+           Nome de Usuário:
+         </label>
+        <input
+           id="nomeUsuario"
+           type="text"
+           {...register("nomeUsuario", {
+            required: "Insira um nome de usuário",
+             minLength: { value: 3, message: "Nome de usuário deve ter ao menos 3 caracteres" },
+            maxLength: { value: 20, message: "Nome de usuário muito longo" },
+          })}
+          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm
+                     focus:ring-2 focus:ring-indigo-500 focus:outline-none transition duration-200"
+        />
+         {errors.nomeUsuario && (
+           <p className="text-red-500 text-sm mt-1">{errors.nomeUsuario.message}</p>
+         )}
+      </div>
+         {errors.nomeUsuario && <p style={{ color: 'red' }}>{errors.nomeUsuario.message}</p>}
 
-
-        <div style={{ marginBottom: '10px' }}>
-          <label>Nome de Usuário:</label>
-          <input
-            type="text"
-            {...register('nomeUsuario', {
-                required: 'Insira um nome de usuário',
-                minLength: { value: 3, message: 'Nome de usuário deve ter ao menos 3 caracteres' },
-                maxLength: { value: 20, message: 'Nome de usuário muito longo' }
-            })}
-
-          />
-          {errors.nomeUsuario && <p style={{ color: 'red' }}>{errors.nomeUsuario.message}</p>}
-        </div>
-        <div style={{ marginBottom: '10px' }}>
-          <label>Email:</label>
-          <input
-            type="email"
-            {...register('email', { 
-                required: 'Insira um email válido',
-                pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Formato de email inválido' },
-                maxLength: { value: 50, message: 'Email muito longo' }
-            })}
-          />
-          {errors.email && <p style={{ color: 'red' }}>{errors.email.message}</p>}
-        </div>
+      <div>
+         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          Email:
+        </label>
+        <input
+           id="email"
+          type="email"
+          {...register("email", {
+            required: "Insira um email válido",
+            pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Formato de email inválido" },
+            maxLength: { value: 50, message: "Email muito longo" },
+           })}
+           className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm
+                      focus:ring-2 focus:ring-indigo-500 focus:outline-none transition duration-200"
+         />
+         {errors.email && (
+           <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+        )}
+       </div>
         <button type="submit">Cadastrar</button>
       </form>
     </div>
