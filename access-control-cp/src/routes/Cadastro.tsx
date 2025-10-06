@@ -49,22 +49,36 @@ const Cadastro: React.FC = () => {
       alert("Ocorreu um erro. Tente novamente.");
     }
   };
+
+
   return (
-    <div style={{ maxWidth: '400px', margin: '50px auto' }}>
-      <h2>Cadastro</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div style={{ marginBottom: '10px' }}>
-          <label>Nome:</label>
+    <div className="max-w-md mx-auto p-8">
+      <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">Cadastro</h2>
+
+
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+
+        <div>
+          <label htmlFor="nome" className="block text-sm font-medium text-gray-700">
+            Nome:
+          </label>
           <input
+            id="nome"
             type="text"
-            {...register('nome', {
-                required: 'Por favor, insira seu nome completo',
-                minLength: { value: 3, message: 'Nome deve ter pelo menos 3 caracteres' },
-                maxLength: { value: 50, message: 'Nome muito longo' }
+            {...register("nome", {
+              required: "Por favor, insira seu nome completo",
+              minLength: { value: 3, message: "Nome deve ter pelo menos 3 caracteres" },
+              maxLength: { value: 50, message: "Nome muito longo" },
             })}
+            className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm
+                       focus:ring-2 focus:ring-indigo-500 focus:outline-none transition duration-200"
           />
-          {errors.nome && <p style={{ color: 'red' }}>{errors.nome.message}</p>}
+          {errors.nome && (
+            <p className="text-red-500 text-sm mt-1">{errors.nome.message}</p>
+          )}
         </div>
+
+
         <div style={{ marginBottom: '10px' }}>
           <label>Nome de Usuário:</label>
           <input
