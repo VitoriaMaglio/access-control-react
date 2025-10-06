@@ -117,7 +117,14 @@ const Cadastro: React.FC = () => {
            <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
         )}
        </div>
-        <button type="submit">Cadastrar</button>
+
+       <button
+         type="submit"
+        className="w-full bg-indigo-600 text-white py-2.5 rounded-lg font-semibold
+                   hover:bg-indigo-700 transition duration-200 shadow-md"
+      >
+        Cadastrar
+       </button>
       </form>
     </div>
   );
